@@ -1,0 +1,41 @@
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 12px;
+  z-index: 9999;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #8040aa;
+  border-radius: 10px;
+
+}
+
+::-webkit-scrollbar-track {
+  background-color:  #131948;
+
+}
+
+/* CUERPO GENERAL */
+body {
+  overflow-x: hidden;
+  background-color: #DCDAE5;
+  color: black;
+}
+
+::selection {
+  background-color: #190948;
+  color: #ffffff; 
+}
+
+::-moz-selection {
+  background-color: #190948; 
+  color: #ffffff; 
+}
+
+.divider::before {
+  content: '|'; 
+  margin-left: 25px;
+  margin-right: -10px;
+  color: #ffffff5b; 
+  text-shadow:#131948;
+}
