@@ -5,16 +5,24 @@ import LoadingSpinner from './LoadingSpinner';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemIcon } from '@mui/material';
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+import SearchIcon from '@mui/icons-material/Search';
 import AboutSection from './AboutSection';
 import ScrollButton from './ScrollButton';
 import SearchPopup from './SearchPopup';
-import SearchIcon from '@mui/icons-material/Search';
 import Login from './Login';
 import Contact from './Contact';
 import Communities from './Communities';
 import CookiesPolicy from './CookiesPolicy';
-import NotFound from './NotFound'; 
+import NotFound from './NotFound';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import PinterestIcon from '@mui/icons-material/Pinterest';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import './App.css';
 
 const Navbar = ({ onSearchClick }) => {
@@ -29,6 +37,8 @@ const Navbar = ({ onSearchClick }) => {
     transition: 'background 0.3s ease',
     opacity: 1,
   };
+
+  const miIconoURL = 'https://i.postimg.cc/1X8yV8nm/enlarge-OIG1-removebg-preview.png';
 
   const linkStyle = {
     fontFamily: 'Montserrat',
@@ -49,7 +59,7 @@ const Navbar = ({ onSearchClick }) => {
     marginLeft: '10px',
     display: 'flex',
     alignItems: 'center',
-    cursor: 'pointer', 
+    cursor: 'pointer',
   };
 
   const searchIconStyle = {
@@ -61,8 +71,19 @@ const Navbar = ({ onSearchClick }) => {
 
     <AppBar position="fixed" sx={navbarStyle}>
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontFamily: 'Montserrat', fontWeight: 'bold', color: '#FFF' }}>
-          Logo
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <img
+            src={miIconoURL}
+            alt="Mi Icono"
+            className="logo"
+            style={{
+              width: '80px',
+              height: '85px',
+              marginRight: '5px',
+              marginTop: '7px',
+              cursor: 'pointer'  // Agregar cursor pointer
+            }}
+          />
         </Typography>
         <Button color="inherit" sx={linkStyle} component={Link} to="/">
           Inicio
@@ -88,6 +109,23 @@ const Navbar = ({ onSearchClick }) => {
   );
 };
 
+const FloatingMenuButton = ({ onClick }) => {
+  return (
+    <div style={{
+      position: 'fixed',
+      bottom: '50%',
+      right: '-12px',
+      backgroundColor: '#262735',
+      borderRadius: '10px',
+      transform: 'translate(0, 50%)',
+      zIndex: '1000',
+    }}>
+      <IconButton onClick={onClick}>
+        <MenuOpenIcon sx={{ color: '#FF729B', fontSize: '40px' }} />
+      </IconButton>
+    </div>
+  );
+};
 
 const Header = () => {
   const backgroundSpring = useSpring({
@@ -136,16 +174,6 @@ const Header = () => {
     marginTop: '10px'
   };
 
-  const imageStyle = {
-    position: 'absolute',
-    width: '100%',
-    height: 'auto',
-    top: '50%',
-    left: '0',
-    transform: 'translateY(25%)',
-    zIndex: -2,
-  };
-
   return (
     <animated.div style={headerStyle}>
       <div style={contentContainerStyle}>
@@ -166,6 +194,8 @@ const App = () => {
   const [open, setOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
 
   useEffect(() => {
     const asyncLoad = async () => {
@@ -192,6 +222,9 @@ const App = () => {
 
   const handleSnackbarClose = () => setOpen(false);
 
+  const handleDrawerToggle = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
 
   const buttonContainerStyle = {
     position: 'absolute',
@@ -247,11 +280,58 @@ const App = () => {
   return (
     <Router>
       <div style={{ position: 'relative', height: '100vh' }}>
-        {showSpinner && <LoadingSpinner />} 
+        <FloatingMenuButton onClick={handleDrawerToggle} />
+        {showSpinner && <LoadingSpinner />}
 
         {pageLoaded && (
           <React.Fragment>
             <Navbar onSearchClick={() => setIsSearchOpen(true)} />
+            <Drawer
+              anchor="right"
+              open={isDrawerOpen}
+              onClose={handleDrawerToggle}
+              sx={{ width: '40%' }} // Ajusta el ancho del Drawer según sea necesario
+            >
+              <div style={{ backgroundColor: '#0B071D', height: '100vh', color: 'white', }}> {/* Contenedor con fondo negro */}
+                <List sx={{ justifyContent: 'center', textAlign: 'center' }}>
+                  <ListItem button sx={{ marginLeft: '20px', marginTop: '30px' }}>
+                    <ListItemIcon>
+                      <FacebookIcon style={{ color: '#969DFC', fontSize: '2.5em' }} />
+                    </ListItemIcon>
+                  </ListItem>
+                  <ListItem button sx={{ marginLeft: '20px', marginTop: '30px' }}>
+                    <ListItemIcon>
+                      <TwitterIcon style={{ color: '#96F1FC', fontSize: '2.5em' }} />
+                    </ListItemIcon>
+                  </ListItem>
+                  <ListItem button sx={{ marginLeft: '20px', marginTop: '30px' }}>
+                    <ListItemIcon>
+                      <InstagramIcon style={{ color: '#FCCF96', fontSize: '2.5em' }} />
+                    </ListItemIcon>
+                  </ListItem>
+                  <ListItem button sx={{ marginLeft: '20px', marginTop: '30px' }}>
+                    <ListItemIcon>
+                      <LinkedInIcon style={{ color: '#9696FC', fontSize: '2.5em' }} />
+                    </ListItemIcon>
+                  </ListItem>
+                  <ListItem button sx={{ marginLeft: '20px', marginTop: '30px' }}>
+                    <ListItemIcon>
+                      <YouTubeIcon style={{ color: '#E23939', fontSize: '2.5em' }} />
+                    </ListItemIcon>
+                  </ListItem>
+                  <ListItem button sx={{ marginLeft: '20px', marginTop: '30px' }}>
+                    <ListItemIcon>
+                      <PinterestIcon style={{ color: '#FF7C7C', fontSize: '2.5em' }} />
+                    </ListItemIcon>
+                  </ListItem>
+                  <ListItem button sx={{ marginLeft: '20px', marginTop: '30px' }}>
+                    <ListItemIcon>
+                      <WhatsAppIcon style={{ color: '#28F77C', fontSize: '2.5em' }} />
+                    </ListItemIcon>
+                  </ListItem>
+                </List>
+              </div>
+            </Drawer>
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/communities" element={<Communities />} />

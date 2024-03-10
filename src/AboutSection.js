@@ -7,6 +7,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import { useInView } from 'react-intersection-observer';
 import { useSpring, animated } from 'react-spring';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import './AboutSection.css';
 
 const AboutSection = () => {
     const sectionStyle = {
@@ -72,8 +73,13 @@ const AboutSection = () => {
         padding: '20px',
         minHeight: '180px',
         borderRadius: '15px',
+        border: '1px solid #7165C4',
         marginBottom: '50px',
+        position: 'relative', // Agregar posición relativa para que los bordes absolutos se posicionen correctamente
+        overflow: 'hidden', // Ocultar cualquier parte del borde que se extienda más allá del contenedor
+        boxShadow: '0 4px 8px #150F3A', // Sombra para el borde neon
     };
+
 
     const userSectionStyle = {
         marginTop: '50px',
@@ -81,14 +87,15 @@ const AboutSection = () => {
 
     const joinSectionStyle = {
         marginTop: '100px',
-        background: 'linear-gradient(to right, #D9C2FF, #D8C6F5)',
+        background: 'linear-gradient(to right, #17112C, #020D29)',
         color: 'black',
         padding: '2em',
         borderRadius: '15px',
         width: '70%',
         boxSizing: 'border-box',
         display: 'flex',
-        boxShadow: '0 4px 8px #7A4BE6',
+        boxShadow: '0 40px 120px #120B29, 0 -40px 120px #0D021B', // Dos sombras, una arriba y otra abajo
+        border: '1px solid #7162D5',
         transition: 'box-shadow 0.3s ease-in-out',
     };
 
@@ -112,7 +119,7 @@ const AboutSection = () => {
         const counterTextStyle = {
             fontSize: '3em',
             fontWeight: 'bold',
-            background: '#15066B',
+            background: '#8AA3F2',
             WebkitBackgroundClip: 'text',
             color: 'transparent',
         };
@@ -138,11 +145,11 @@ const AboutSection = () => {
 
     return (
         <div style={sectionStyle}>
-            <Typography variant="h4" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '17px', marginBottom: '15px', fontWeight: 'bold', color: '#666' }}>
+            <Typography variant="h4" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '17px', marginBottom: '15px', fontWeight: 'bold', color: '#9651FF' }}>
                 Para nuestros usuarios
             </Typography>
 
-            <Typography variant="h4" style={{ fontFamily: 'Montserrat, sans-serif', marginBottom: '20px', fontWeight: 'bold' }}>
+            <Typography variant="h4" style={{ color: '#CECCD1', fontFamily: 'Montserrat, sans-serif', marginBottom: '20px', fontWeight: 'bold', fontSize: '40px' }}>
                 Beneficios de{' '}
                 <span style={{
                     background: 'linear-gradient(to right, #3A1789, #8028CA)',
@@ -191,11 +198,11 @@ const AboutSection = () => {
             </Grid>
 
             <div ref={userSectionRef} style={userSectionStyle}>
-                <Typography variant="h4" style={{ fontFamily: 'Montserrat, sans-serif', marginBottom: '10px', fontWeight: 'bold' }}>
+                <Typography variant="h4" style={{ fontFamily: 'Montserrat, sans-serif', marginBottom: '10px', fontWeight: 'bold', color: '#CECCD1', fontSize: '40px' }}>
                     Únete, ya somos <Counter value={userCount} />
                 </Typography>
                 <div style={{ maxWidth: '650px', margin: 'auto' }}>
-                    <Typography variant="h4" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '13px', marginRight: '10px', fontWeight: 'bold', color: '#666' }}>
+                    <Typography variant="h4" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '13px', marginRight: '10px', fontWeight: 'bold', color: '#CD92FF' }}>
                         Descubra cómo UniConnect ha sido un socio fundamental en nuestros éxitos académicos, proporcionando oportunidades que han influido en nuestros futuros profesionales.
                     </Typography>
                 </div>
@@ -208,7 +215,7 @@ const AboutSection = () => {
                 <div style={{ ...joinSectionStyle, display: 'flex', width: '85%', marginBottom: '50px' }}>
                     <div style={{ display: 'flex' }}>
                         <div style={{ flex: 1, marginRight: '20px' }}>
-                            <Typography variant="h4" style={{ fontFamily: 'Montserrat, sans-serif', marginBottom: '20px', fontWeight: 'bold' }}>
+                            <Typography variant="h4" style={{ color: '#C1BAD7', fontFamily: 'Montserrat, sans-serif', marginBottom: '20px', fontWeight: 'bold' }}>
                                 Sobre la <span style={{
                                     backgroundImage: `linear-gradient(35deg, #FB9121, #3A21F0)`,
                                     WebkitTextFillColor: 'transparent',
@@ -222,8 +229,8 @@ const AboutSection = () => {
                                     </ListItemIcon>
                                     <div style={{ marginLeft: '10px' }}>
                                         <ListItemText
-                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', color: '#4B4A4B' }}>Participa en Eventos Exclusivos</Typography>}
-                                            secondary={<Typography variant="body2" style={{ color: '#4B4A4B', fontFamily: 'Montserrat, sans-serif' }}>
+                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold' }}>Participa en Eventos Exclusivos</Typography>}
+                                            secondary={<Typography variant="body2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                                 Amplía tus horizontes académicos y profesionales mediante eventos exclusivos organizados por UniConnect.
                                             </Typography>}
                                         />
@@ -235,8 +242,8 @@ const AboutSection = () => {
                                     </ListItemIcon>
                                     <div style={{ marginLeft: '10px' }}>
                                         <ListItemText
-                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', color: '#4B4A4B' }}>Establece Conexiones Profundas</Typography>}
-                                            secondary={<Typography variant="body2" style={{ color: '#4B4A4B', fontFamily: 'Montserrat, sans-serif' }}>
+                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold' }}>Establece Conexiones Profundas</Typography>}
+                                            secondary={<Typography variant="body2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                                 Conecta con docentes y estudiantes, formando relaciones significativas que enriquecerán tu experiencia académica.
                                             </Typography>}
                                         />
@@ -244,7 +251,7 @@ const AboutSection = () => {
                                 </ListItem>
                                 {/* Agrega más íconos y puntos importantes según sea necesario */}
                             </List>
-                            <Typography variant="body1" style={{ color: 'black', fontFamily: 'Montserrat, sans-serif' }}>
+                            <Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed ullamcorper morbi tincidunt ornare massa eget.
                             </Typography>
 
@@ -273,7 +280,7 @@ const AboutSection = () => {
                     <div style={{ display: 'flex' }}>
                         {/* Columna Izquierda con Puntos Importantes e Iconos */}
                         <div style={{ flex: 1, marginRight: '20px' }}>
-                            <Typography variant="h4" style={{ fontFamily: 'Montserrat, sans-serif', marginBottom: '15px', fontWeight: 'bold' }}>
+                            <Typography variant="h4" style={{ color: '#C1BAD7', fontFamily: 'Montserrat, sans-serif', marginBottom: '15px', fontWeight: 'bold' }}>
                                 Sobre el <span style={{
                                     backgroundImage: `linear-gradient(25deg, #E5A717, #20A026)`,
                                     WebkitTextFillColor: 'transparent',
@@ -287,8 +294,8 @@ const AboutSection = () => {
                                     </ListItemIcon>
                                     <div style={{ marginLeft: '10px' }}>
                                         <ListItemText
-                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', color: '#4B4A4B', }}>Nombre del punto importante</Typography>}
-                                            secondary={<Typography variant="body2" style={{ color: '#4B4A4B', fontFamily: 'Montserrat, sans-serif' }}>
+                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold'  }}>Nombre del punto importante</Typography>}
+                                            secondary={<Typography variant="body2" style={{  fontFamily: 'Montserrat, sans-serif' }}>
                                                 Descripción del punto importante del ITH.
                                             </Typography>}
                                         />
@@ -300,15 +307,15 @@ const AboutSection = () => {
                                     </ListItemIcon>
                                     <div style={{ marginLeft: '10px' }}>
                                         <ListItemText
-                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', color: '#4B4A4B' }}>Nombre del punto importante</Typography>}
-                                            secondary={<Typography variant="body2" style={{ color: '#4B4A4B', fontFamily: 'Montserrat, sans-serif' }}>
+                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold' }}>Nombre del punto importante</Typography>}
+                                            secondary={<Typography variant="body2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                                 Descripción del punto importante del ITH.
                                             </Typography>}
                                         />
                                     </div>
                                 </ListItem>
                             </List>
-                            <Typography variant="body1" style={{ color: 'black', fontFamily: 'Montserrat, sans-serif' }}>
+                            <Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed ullamcorper morbi tincidunt ornare massa eget.
                             </Typography>
                         </div>
@@ -334,7 +341,7 @@ const AboutSection = () => {
                 <div style={{ ...joinSectionStyle, display: 'flex', width: '85%', marginTop: '80px' }}>
                     <div style={{ display: 'flex' }}>
                         <div style={{ flex: 1, marginRight: '20px' }}>
-                            <Typography variant="h4" style={{ fontFamily: 'Montserrat, sans-serif', marginBottom: '15px', fontWeight: 'bold' }}>
+                            <Typography variant="h4" style={{ color: '#C1BAD7', fontFamily: 'Montserrat, sans-serif', marginBottom: '15px', fontWeight: 'bold' }}>
                                 Sobre la <span style={{
                                     backgroundImage: `linear-gradient(25deg, #75604A, #CBAD45)`,
                                     WebkitTextFillColor: 'transparent',
@@ -348,8 +355,8 @@ const AboutSection = () => {
                                     </ListItemIcon>
                                     <div style={{ marginLeft: '10px' }}>
                                         <ListItemText
-                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold',  color: '#4B4A4B' }}>Nombre del punto importante</Typography>}
-                                            secondary={<Typography variant="body2" style={{ color: '#4B4A4B', fontFamily: 'Montserrat, sans-serif' }}>
+                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold' }}>Nombre del punto importante</Typography>}
+                                            secondary={<Typography variant="body2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                                 Descripción del punto importante de la UES.
                                             </Typography>}
                                         />
@@ -361,15 +368,15 @@ const AboutSection = () => {
                                     </ListItemIcon>
                                     <div style={{ marginLeft: '10px' }}>
                                         <ListItemText
-                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', color: '#4B4A4B' }}>Nombre del punto importante</Typography>}
-                                            secondary={<Typography variant="body2" style={{ color: '#4B4A4B', fontFamily: 'Montserrat, sans-serif' }}>
+                                            primary={<Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold' }}>Nombre del punto importante</Typography>}
+                                            secondary={<Typography variant="body2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                                 Descripción del punto importante de la UES.
                                             </Typography>}
                                         />
                                     </div>
                                 </ListItem>
                             </List>
-                            <Typography variant="body1" style={{ color: 'black', fontFamily: 'Montserrat, sans-serif' }}>
+                            <Typography variant="body1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed ullamcorper morbi tincidunt ornare massa eget.
                             </Typography>
                         </div>
@@ -394,7 +401,6 @@ const AboutSection = () => {
             </div>
 
 
-            {/* nueva seccion */}
             <div style={{
                 display: 'flex',
                 textAlign: 'left',
@@ -403,19 +409,16 @@ const AboutSection = () => {
                 position: 'relative',
                 overflow: 'visible',
                 width: 'calc(100% + 160px)',
-                minHeight: '500px',
+                minHeight: '800px',
             }}>
-
-                {/* imagen de fondo */}
                 <div style={{
                     position: 'absolute',
                     top: '-50px',
                     left: '-50px',
                     width: 'calc(100% + 100px)',
                     height: 'calc(100% + 100px)',
-                    backgroundImage: 'url("https://i.ebayimg.com/images/g/BFkAAOSw4~9dNux0/s-l1200.jpg")',
-                    backgroundSize: 'cover',
-                    transform: 'rotate(-6deg)',
+                    backgroundColor: '#190E3D', 
+                    transform: 'rotate(-6deg)', 
                     zIndex: -1,
                 }}></div>
 
@@ -433,14 +436,17 @@ const AboutSection = () => {
                         fontWeight: 'bold',
                         fontSize: '50px',
                         marginTop: '120px',
+                        color: '#B69FFF',
                     }}>
-                        Lorem Ipsum? Lorem Ipsum
+                        Recursos por y para estudiantes
                     </Typography>
                     <div>
                         <p>lorem ipsum</p>
                     </div>
                 </div>
             </div>
+
+
         </div>
     );
 };

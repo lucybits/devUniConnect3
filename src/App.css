@@ -11,17 +11,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color:  #131948;
+  background-color:  #090c26;
 
 }
 
 /* CUERPO GENERAL */
 body {
   overflow-x: hidden;
-  background-color: #DCDAE5;
-  color: black;
+  background: #080317;
+  color: white;
 }
-
 ::selection {
   background-color: #190948;
   color: #ffffff; 
@@ -38,4 +37,11 @@ body {
   margin-right: -10px;
   color: #ffffff5b; 
   text-shadow:#131948;
+}
+.logo {
+  transition: filter 0.3s ease; /* Agrega una transición suave */
+}
+
+.logo:hover {
+  filter: brightness(100%) hue-rotate(45deg); /* Cambia el tono del color */
 }
